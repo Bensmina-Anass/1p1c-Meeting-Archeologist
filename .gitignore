@@ -1,1 +1,7 @@
 README_PLAN.md
+__pycache__/
+*.pyc
+*.db
+.env
+.idea/
+.vscode/
