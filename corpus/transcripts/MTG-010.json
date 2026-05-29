@@ -1,0 +1,20 @@
+{
+  "meeting_id": "MTG-010",
+  "date": "2025-05-05",
+  "title": "Sprint 15 Planning and Client Prep",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"},
+    {"name": "Omar", "role": "DevOps Engineer"}
+  ],
+  "agenda": [
+    {"title": "Sprint 14 wrap-up"},
+    {"title": "Sprint 15 scope"},
+    {"title": "Client demo preparation"}
+  ],
+  "raw_text": "Sarah: Sprint 14 is done. Karim finished the ORM migration. Youssef has a working search prototype. Good work. Now, Sprint 15. The priority is the notification system. Lina, you have the requirements ready?\n\nLina: Yes, they have been ready for three weeks. The client demo is on May 1. We are already late.\n\nSarah: The demo was moved to May 15. I communicated that to sales.\n\nLina: Sales told me the demo is May 8. They never got a message about May 15.\n\nSarah: I will follow up with sales today. Regardless, we need notifications working by May 12 at the latest.\n\nKarim: I can build the backend notification service. I estimate one week.\n\nYoussef: I will build the frontend notification panel. I also need one week, but I depend on Karim's API.\n\nSarah: Karim, deliver the notification API by May 9. Youssef, you finish the frontend by May 12.\n\nOmar: I need to set up the message queue for notifications. RabbitMQ or Redis pub/sub?\n\nSarah: Use Redis. It is simpler and we already have it running.\n\nOmar: Fine. I will have Redis pub/sub configured by May 7.\n\nLina: One more thing. The budget review from last month said we keep both databases. Are we still doing that? Because the MongoDB cluster costs went up, not down.\n\nOmar: I optimized it to 15,000 per month as planned. If it went up again, something else is running on that cluster.\n\nSarah: Omar, investigate the cost increase and report back by Wednesday. We are not making any database consolidation decisions this sprint.\n\nSarah: Clear plan everyone. Let us execute. Meeting adjourned.",
+  "duration_minutes": 30,
+  "location": "Conference Room B"
+}

@@ -1,0 +1,17 @@
+{
+  "meeting_id": "MTG-009",
+  "date": "2025-04-28",
+  "title": "Sprint 14 Mid-Sprint Check",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Youssef", "role": "Frontend Lead"}
+  ],
+  "agenda": [
+    {"title": "ORM migration progress"},
+    {"title": "Search prototype status"}
+  ],
+  "raw_text": "Sarah: Quick update. Karim, how is the ORM migration going?\n\nKarim: Slower than expected. I converted 40 of the 60 queries. The remaining 20 are complex joins that do not map cleanly to the ORM. I might need to keep some as raw SQL with proper wrappers.\n\nSarah: That is a pragmatic approach. Do what makes sense. Do not force everything into the ORM if it makes the code worse.\n\nKarim: Understood. I should be done by May 2 as planned, but the result will be 80 percent ORM and 20 percent wrapped raw SQL.\n\nSarah: That is acceptable.\n\nYoussef: The search prototype is working. Basic text search across all entities. It is rough but functional.\n\nSarah: Good. We should probably add filters to it at some point. And maybe autocomplete. But that is for later.\n\nYoussef: Should I keep working on it or stop here?\n\nSarah: Keep polishing it a bit. But do not spend too much time. We have other things coming up.\n\nYoussef: How much time is not too much?\n\nSarah: Use your judgment. A couple of days maybe. Let us talk about it next week.\n\nSarah: Anything else? Good. Meeting closed.",
+  "duration_minutes": 15,
+  "location": "Conference Room A"
+}

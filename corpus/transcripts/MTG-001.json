@@ -1,0 +1,19 @@
+{
+  "meeting_id": "MTG-001",
+  "date": "2025-03-03",
+  "title": "Sprint 12 Kickoff",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"}
+  ],
+  "agenda": [
+    {"title": "Sprint 12 goals"},
+    {"title": "Database migration plan"},
+    {"title": "Q2 roadmap alignment"}
+  ],
+  "raw_text": "Sarah: Welcome everyone. Sprint 12 starts today. Our main goal this sprint is to finish the database migration from MySQL to PostgreSQL. Karim, you own this. Deadline is March 14.\n\nKarim: Understood. I will start with the schema conversion this week. I need Youssef to freeze the frontend API calls by Wednesday so I can map all the endpoints.\n\nYoussef: I can do that. I will have the API call inventory ready by Wednesday March 5.\n\nLina: On the product side, we are pushing the new dashboard feature to Sprint 13. This sprint is only about the migration. No new features.\n\nSarah: Agreed. Migration is the only priority. Karim, please write a rollback plan by March 7 in case something breaks.\n\nKarim: Will do. I will document the rollback steps and share them on Confluence by Friday March 7.\n\nSarah: Good. Let us meet again on March 10 for a mid-sprint check. Meeting adjourned.",
+  "duration_minutes": 25,
+  "location": "Conference Room A"
+}

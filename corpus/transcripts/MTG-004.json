@@ -1,0 +1,19 @@
+{
+  "meeting_id": "MTG-004",
+  "date": "2025-03-24",
+  "title": "Sprint 13 Planning",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"},
+    {"name": "Omar", "role": "DevOps Engineer"}
+  ],
+  "agenda": [
+    {"title": "Dashboard feature planning"},
+    {"title": "Infrastructure decisions"}
+  ],
+  "raw_text": "Sarah: Welcome to Sprint 13 planning. First topic: we need to decide on the database for the new analytics module. I think MongoDB is the right choice for the analytics data. It handles unstructured data better.\n\nKarim: Wait, we just migrated everything to PostgreSQL last sprint. Are we adding a second database now?\n\nSarah: Yes. The analytics data is different. It is schema-less and changes frequently. MongoDB is better for that use case. PostgreSQL stays for the core application data.\n\nLina: The dashboard requirements document is ready. I shared it on Confluence yesterday. The dashboard needs real-time filtering and we need it done by April 4.\n\nSarah: April 4 is tight. Karim, can you handle the backend API for the dashboard?\n\nKarim: I can start, but if I also have to set up MongoDB, I cannot do both by April 4.\n\nSarah: Omar, can you handle the MongoDB setup?\n\nOmar: I can set up the cluster, but someone needs to define the collections and indexes.\n\nSarah: We will figure out the ownership for the schema design later. Let us move on.\n\nYoussef: For the frontend, I need the API contracts from Karim by March 28.\n\nKarim: I will have them ready by March 28.\n\nSarah: Good. Next meeting is March 31.",
+  "duration_minutes": 30,
+  "location": "Conference Room B"
+}

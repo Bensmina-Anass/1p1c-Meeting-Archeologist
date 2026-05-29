@@ -1,0 +1,18 @@
+{
+  "meeting_id": "MTG-003",
+  "date": "2025-03-17",
+  "title": "Sprint 12 Review",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"}
+  ],
+  "agenda": [
+    {"title": "Migration status"},
+    {"title": "Sprint 13 preview"}
+  ],
+  "raw_text": "Sarah: Sprint 12 review. Karim, is the migration done?\n\nKarim: Yes. All 15 queries are rewritten. Staging tests pass. I ran the full test suite and everything is green. We are ready to deploy to production.\n\nSarah: Excellent. Let us schedule the production deployment for Wednesday March 19 during the maintenance window. Karim, you lead the deployment. Youssef, be on standby in case frontend issues come up.\n\nYoussef: Got it. I will be available Wednesday evening.\n\nLina: For Sprint 13, we are picking up the dashboard feature that was deferred. I will have the requirements document ready by March 20.\n\nSarah: Perfect. Karim, after the deployment, your focus shifts to the dashboard backend API. Lina will share the specs.\n\nKarim: Understood. I will wait for Lina's document before starting.\n\nSarah: Good sprint everyone. Meeting closed.",
+  "duration_minutes": 20,
+  "location": "Conference Room A"
+}

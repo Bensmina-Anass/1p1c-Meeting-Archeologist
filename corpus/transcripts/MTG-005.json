@@ -1,0 +1,18 @@
+{
+  "meeting_id": "MTG-005",
+  "date": "2025-03-31",
+  "title": "Sprint 13 Mid-Sprint Check",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Omar", "role": "DevOps Engineer"}
+  ],
+  "agenda": [
+    {"title": "Dashboard progress"},
+    {"title": "MongoDB setup status"}
+  ],
+  "raw_text": "Sarah: Status update on the dashboard. Karim, where are we?\n\nKarim: The API contracts were delivered to Youssef on March 28 as planned. I have two of the five endpoints done. But I still do not know who is designing the MongoDB collections. Nobody picked that up.\n\nOmar: I set up the MongoDB cluster on staging. It is running. But like I said last week, I do not do schema design. That is not my area.\n\nSarah: Karim, just take ownership of the MongoDB schema design. You know the data best.\n\nKarim: Fine, but then the dashboard deadline of April 4 is impossible. I need at least until April 11.\n\nSarah: April 11 works. The dashboard deadline is now April 11.\n\nLina: I want to flag that the client demo is on April 8. We promised them a working dashboard.\n\nSarah: We will show them a partial demo on April 8 with the two endpoints Karim already built. The full version ships April 11.\n\nLina: That is risky. The client expects the filtering feature specifically.\n\nSarah: Noted. Karim, make the filtering endpoint your third priority so it is ready for the demo.\n\nKarim: I will try. No guarantees.\n\nSarah: Do your best. Meeting closed.",
+  "duration_minutes": 20,
+  "location": "Conference Room B"
+}

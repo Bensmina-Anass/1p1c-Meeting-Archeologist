@@ -1,0 +1,18 @@
+{
+  "meeting_id": "MTG-006",
+  "date": "2025-04-07",
+  "title": "Q2 Budget and Infrastructure Review",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Omar", "role": "DevOps Engineer"},
+    {"name": "Nadia", "role": "CFO"}
+  ],
+  "agenda": [
+    {"title": "Q2 infrastructure budget"},
+    {"title": "Cloud costs review"}
+  ],
+  "raw_text": "Nadia: Let us review the Q2 infrastructure budget. We allocated 50,000 dirhams for cloud and database costs this quarter.\n\nOmar: Current monthly spend is 12,000 dirhams. With the new MongoDB cluster, it will go up to 18,000 per month. That puts us at 54,000 for the quarter, which is over budget.\n\nSarah: We need to cut costs. Can we consolidate? What if we move everything to MongoDB and drop PostgreSQL entirely? That saves us one database to maintain.\n\nKarim: That is a major change. We just finished migrating to PostgreSQL two sprints ago. And last meeting we said PostgreSQL stays for core application data.\n\nSarah: I know, but the budget is only 30,000 dirhams and we cannot afford both.\n\nNadia: To clarify, the budget is 50,000. Not 30,000.\n\nSarah: Right, 50,000. Sorry. But even at 50,000, we are 4,000 over with both databases.\n\nOmar: I can optimize the MongoDB cluster to bring it down to 15,000 per month. That puts us at 45,000 for the quarter, under budget.\n\nSarah: Do that. Omar, optimize the cluster by end of this week. We keep both databases for now. Final decision on consolidation at the end of Q2.\n\nKarim: Agreed. I do not want another migration this quarter.\n\nSarah: Meeting adjourned.",
+  "duration_minutes": 25,
+  "location": "Conference Room A"
+}

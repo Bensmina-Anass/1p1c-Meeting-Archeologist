@@ -1,0 +1,49 @@
+erDiagram
+    meetings {
+        TEXT meeting_id PK
+        TEXT date
+        TEXT title
+        INTEGER duration_min
+        TEXT location
+    }
+
+    tasks {
+        INTEGER id PK
+        TEXT meeting_id FK
+        TEXT description
+        TEXT owner
+        TEXT deadline
+        TEXT depends_on
+    }
+
+    decisions {
+        INTEGER id PK
+        TEXT meeting_id FK
+        TEXT description
+        TEXT rationale
+        TEXT priority_shift
+    }
+
+    risks {
+        INTEGER id PK
+        TEXT meeting_id FK
+        TEXT description
+        TEXT severity
+        TEXT category
+        TEXT contradicts_meeting_id
+    }
+
+    consensus_results {
+        INTEGER id PK
+        TEXT meeting_id FK
+        TEXT unified_summary
+        TEXT agreements
+        TEXT conflicts
+        REAL confidence_score
+    }
+
+    meetings ||--o{ tasks : "has"
+    meetings ||--o{ decisions : "has"
+    meetings ||--o{ risks : "has"
+    meetings ||--|| consensus_results : "has"
+    meetings ||--o{ risks : "contradicts"

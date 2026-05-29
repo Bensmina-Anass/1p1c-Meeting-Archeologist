@@ -1,0 +1,18 @@
+{
+  "meeting_id": "MTG-007",
+  "date": "2025-04-14",
+  "title": "Product Roadmap Discussion",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"},
+    {"name": "Karim", "role": "Backend Lead"}
+  ],
+  "agenda": [
+    {"title": "Q2 feature priorities"},
+    {"title": "Technical debt"}
+  ],
+  "raw_text": "Lina: We need to talk about what comes after the dashboard. Sales is pushing for a notification system. Customer support wants better search. And we still have technical debt from the migration.\n\nSarah: All three are important. What does the team think?\n\nYoussef: The search improvement is probably the easiest win. I could prototype something in a week.\n\nKarim: The technical debt worries me more. We have raw SQL queries that are not using the ORM. If we keep building on top of this, it gets worse.\n\nLina: Sales says notifications are the top revenue driver. Two enterprise clients are waiting for it.\n\nSarah: Let us do notifications and search in parallel. Technical debt can wait until Sprint 15.\n\nKarim: Who is doing what?\n\nSarah: We will sort out assignments at the next sprint planning. For now, just know the priorities are notifications first, search second, tech debt third.\n\nLina: Should I start writing requirements for both?\n\nSarah: Yes, start with notifications. Get the requirements to the team by next Monday.\n\nYoussef: What about the search? Should I start the prototype now or wait?\n\nSarah: Wait for the sprint planning. Let us not get ahead of ourselves.\n\nSarah: Anything else? No? Meeting closed.",
+  "duration_minutes": 20,
+  "location": "Conference Room A"
+}

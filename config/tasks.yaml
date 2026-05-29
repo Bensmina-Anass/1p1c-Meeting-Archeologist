@@ -1,0 +1,100 @@
+extract_actions:
+  description: >
+    Analyze the following meeting transcript and extract all action items.
+
+    For each action item provide:
+    - description: what needs to be done
+    - owner: who is responsible (null if ambiguous)
+    - deadline: specific date or relative time if mentioned (null if not stated)
+    - depends_on: another action or person this task is blocked on (null if none)
+    - source_quote: the exact verbatim sentence(s) from the transcript that led you to identify this action item
+
+    Also write a one-paragraph summary of the overall action landscape.
+
+    Transcript:
+    {transcript}
+
+    Meeting ID: {meeting_id}
+  expected_output: >
+    A JSON object matching this schema:
+    {{
+      "meeting_id": "<string>",
+      "action_items": [
+        {{
+          "description": "<string>",
+          "owner": "<string or null>",
+          "deadline": "<string or null>",
+          "depends_on": "<string or null>",
+          "source_quote": "<string or null>"
+        }}
+      ],
+      "summary": "<string>"
+    }}
+  agent: action_analyzer
+
+extract_strategic:
+  description: >
+    Analyze the following meeting transcript and extract all strategic decisions.
+
+    For each decision provide:
+    - description: what was decided
+    - rationale: why this decision was made, if stated
+    - priority_shift: if this changes the previous focus or reprioritizes work, describe it
+    - source_quote: the exact verbatim sentence(s) from the transcript that led you to identify this decision
+
+    Also write a one-paragraph summary of the strategic direction emerging from this meeting.
+
+    Transcript:
+    {transcript}
+
+    Meeting ID: {meeting_id}
+  expected_output: >
+    A JSON object matching this schema:
+    {{
+      "meeting_id": "<string>",
+      "decisions": [
+        {{
+          "description": "<string>",
+          "rationale": "<string or null>",
+          "priority_shift": "<string or null>",
+          "source_quote": "<string or null>"
+        }}
+      ],
+      "summary": "<string>"
+    }}
+  agent: strategic_analyzer
+
+extract_risks:
+  description: >
+    Analyze the following meeting transcript and identify all risks, blockers,
+    and contradictions.
+
+    For each risk provide:
+    - description: what the risk is
+    - severity: one of "low", "medium", or "high"
+    - category: one of "timeline", "ownership", "contradiction", "dependency", or "other"
+    - contradicts_meeting_id: if this contradicts a decision from another meeting, state that meeting ID
+    - source_quote: the exact verbatim sentence(s) from the transcript that led you to identify this risk
+
+    Also write a one-paragraph summary of the risk profile of this meeting.
+
+    Transcript:
+    {transcript}
+
+    Meeting ID: {meeting_id}
+  expected_output: >
+    A JSON object matching this schema:
+    {{
+      "meeting_id": "<string>",
+      "risks": [
+        {{
+          "description": "<string>",
+          "severity": "low | medium | high",
+          "category": "<string>",
+          "contradicts_meeting_id": "<string or null>",
+          "source_quote": "<string or null>"
+        }}
+      ],
+      "summary": "<string>"
+    }}
+  agent: risk_analyzer

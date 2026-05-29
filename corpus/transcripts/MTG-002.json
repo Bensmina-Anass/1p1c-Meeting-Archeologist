@@ -1,0 +1,17 @@
+{
+  "meeting_id": "MTG-002",
+  "date": "2025-03-10",
+  "title": "Sprint 12 Mid-Sprint Check",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Youssef", "role": "Frontend Lead"}
+  ],
+  "agenda": [
+    {"title": "Migration progress"},
+    {"title": "Blockers"}
+  ],
+  "raw_text": "Sarah: Quick check on the migration. Karim, where are we?\n\nKarim: Schema conversion is done. I finished it last Thursday. The rollback plan is on Confluence as promised. I am now running data migration scripts on the staging environment.\n\nSarah: Any issues so far?\n\nKarim: One problem. The legacy reports module uses raw SQL queries that are MySQL-specific. I need to rewrite about 15 queries. That will take two extra days.\n\nSarah: So the March 14 deadline is at risk?\n\nKarim: Yes. I think we need to push it to March 17. The rewrite is unavoidable.\n\nSarah: Understood. New deadline is March 17. Karim, send me a list of the 15 queries by tomorrow so I can review the scope.\n\nKarim: I will send the list by end of day tomorrow, March 11.\n\nYoussef: On my side, the API call inventory was delivered on March 5 as planned. No blockers from frontend.\n\nSarah: Good. Let us keep moving. Next check at the sprint review on March 17.",
+  "duration_minutes": 15,
+  "location": "Conference Room A"
+}

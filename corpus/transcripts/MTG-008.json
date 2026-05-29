@@ -1,0 +1,18 @@
+{
+  "meeting_id": "MTG-008",
+  "date": "2025-04-21",
+  "title": "Sprint 14 Planning",
+  "participants": [
+    {"name": "Sarah", "role": "CTO"},
+    {"name": "Karim", "role": "Backend Lead"},
+    {"name": "Lina", "role": "Product Manager"},
+    {"name": "Youssef", "role": "Frontend Lead"}
+  ],
+  "agenda": [
+    {"title": "Sprint 14 scope"},
+    {"title": "Task assignments"}
+  ],
+  "raw_text": "Sarah: Sprint 14 planning. After thinking about it over the weekend, I want to make technical debt the top priority this sprint. The ORM migration cannot wait any longer.\n\nLina: Hold on. Last week we agreed notifications are the top priority. I already wrote the requirements. Two enterprise clients are waiting.\n\nSarah: I understand, but if the backend is fragile, shipping notifications on a broken foundation is worse. Tech debt first, notifications in Sprint 15.\n\nLina: The clients were promised a demo by May 1.\n\nSarah: We will push the demo to May 15. I will talk to sales.\n\nKarim: I agree with Sarah. The raw SQL situation is getting dangerous. I will lead the ORM migration. I estimate two weeks.\n\nSarah: Good. Karim owns the ORM migration. Deadline is May 2.\n\nYoussef: What about search? Last meeting you told me to wait for sprint planning. Should I start the prototype now?\n\nSarah: Yes, go ahead. Start the search prototype this sprint. It is a small task and does not conflict with the ORM work.\n\nYoussef: I will have a working prototype by April 30.\n\nLina: I am concerned about the client communication. Who tells them about the delay?\n\nSarah: I will handle it personally. Meeting adjourned.",
+  "duration_minutes": 25,
+  "location": "Conference Room A"
+}
