@@ -19,9 +19,62 @@ Instead of one AI analyzing everything, Meeting Archeologist uses three speciali
 - **The Strategic Analyst** focuses on direction: what decisions were made, what priorities shifted, and why.
 - **The Risk Analyst** focuses on what could go wrong: unresolved questions, missing owners, unrealistic timelines, and contradictions with past meetings.
 
+Each finding is grounded in a verbatim quote from the transcript (`source_quote`), so every extracted item can be traced back to the exact sentence that produced it.
+
 Because all three read the same transcript, they often identify the same items — but frame them differently. A budget cut might be an "action" to one, a "strategic pivot" to another, and a "risk" to the third.
 
 A fourth agent — the **Consensus Agent** — takes all three outputs, finds where they agree, flags where they disagree, and produces a single unified meeting summary with confidence scores.
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Meeting Transcript                       │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │     Orchestrator     │
+                    │      (main.py)       │
+                    │  loads transcript,   │
+                    │  drives both crews   │
+                    └──────────┬──────────┘
+                               │
+              ╔════════════════╧═════════════════╗
+              ║          Crew 1 — parallel        ║
+              ╠══════════════════════════════════╣
+              │                │                 │
+   ┌──────────▼──────┐ ┌───────▼───────┐ ┌──────▼──────────┐
+   │  Action Analyst  │ │  Strategic    │ │  Risk Analyst   │
+   │                  │ │  Analyst      │ │                 │
+   │  action items    │ │  decisions    │ │  risks          │
+   │  owner           │ │  rationale    │ │  severity       │
+   │  deadline        │ │  priority     │ │  category       │
+   │  depends_on      │ │  shift        │ │  contradictions │
+   │  source_quote    │ │  source_quote │ │  source_quote   │
+   └──────────┬───────┘ └───────┬───────┘ └──────┬──────────┘
+              └─────────────────┼─────────────────┘
+                                │
+              ╔═════════════════╧════════════════╗
+              ║          Crew 2 — sequential      ║
+              ╠══════════════════════════════════╣
+                                │
+                    ┌───────────▼─────────┐
+                    │   Consensus Agent    │
+                    │                      │
+                    │  agreements          │
+                    │  conflicts           │
+                    │  unified summary     │
+                    │  confidence score    │
+                    └───────────┬──────────┘
+                                │
+                    ┌───────────▼──────────┐
+                    │     SQLite Memory     │
+                    │                       │
+                    │  meetings   tasks     │
+                    │  decisions  risks     │
+                    │  consensus_results    │
+                    └───────────────────────┘
+```
 
 ## The core question
 

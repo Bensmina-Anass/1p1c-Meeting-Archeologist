@@ -1,33 +1,36 @@
 import json
+import yaml
+from pathlib import Path
 from crewai import Agent, Task, Crew
-from crewai.project import CrewBase, agent, task
 from models.outputs import StrategicOutput
+from agents._llm import local_llm
+
+_CONFIG_DIR = Path(__file__).parent.parent / "config"
 
 
-@CrewBase
+def _cfg(yaml_file: str, key: str) -> dict:
+    return yaml.safe_load((_CONFIG_DIR / yaml_file).read_text())[key]
+
+
 class StrategicAnalyzerCrew:
-    agents_config = "config/agents.yaml"
-    tasks_config = "config/tasks.yaml"
-
-    @agent
-    def strategic_analyzer(self) -> Agent:
-        return Agent(config=self.agents_config["strategic_analyzer"], verbose=True)
-
-    @task
-    def extract_strategic(self) -> Task:
-        return Task(config=self.tasks_config["extract_strategic"])
-
     def run(self, meeting_id: str, transcript: str) -> StrategicOutput:
-        crew = Crew(
-            agents=[self.strategic_analyzer()],
-            tasks=[self.extract_strategic()],
-            verbose=True,
+        a = _cfg("agents.yaml", "strategic_analyzer")
+        t = _cfg("tasks.yaml", "extract_strategic")
+
+        agent = Agent(role=a["role"], goal=a["goal"], backstory=a["backstory"], llm=local_llm(), verbose=True)
+        task = Task(
+            description=t["description"].format(meeting_id=meeting_id, transcript=transcript),
+            expected_output=t["expected_output"],
+            agent=agent,
         )
-        result = crew.kickoff(inputs={"meeting_id": meeting_id, "transcript": transcript})
-        raw = result.raw if hasattr(result, "raw") else str(result)
-        raw = raw.strip()
-        if raw.startswith("```"):
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        return StrategicOutput.model_validate(json.loads(raw.strip()))
+        result = Crew(agents=[agent], tasks=[task], verbose=True).kickoff()
+        return _parse(result, StrategicOutput)
+
+
+def _parse(result, model):
+    raw = (result.raw if hasattr(result, "raw") else str(result)).strip()
+    if raw.startswith("```"):
+        raw = raw.split("```")[1]
+        if raw.startswith("json"):
+            raw = raw[4:]
+    return model.model_validate(json.loads(raw.strip()))
