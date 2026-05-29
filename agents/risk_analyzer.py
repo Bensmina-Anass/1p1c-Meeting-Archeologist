@@ -13,13 +13,17 @@ def _cfg(yaml_file: str, key: str) -> dict:
 
 
 class RiskAnalyzerCrew:
-    def run(self, meeting_id: str, transcript: str) -> RiskOutput:
+    def run(self, meeting_id: str, transcript: str, prior_context: str = "") -> RiskOutput:
         a = _cfg("agents.yaml", "risk_analyzer")
         t = _cfg("tasks.yaml", "extract_risks")
 
         agent = Agent(role=a["role"], goal=a["goal"], backstory=a["backstory"], llm=local_llm(), verbose=True)
         task = Task(
-            description=t["description"].format(meeting_id=meeting_id, transcript=transcript),
+            description=t["description"].format(
+                meeting_id=meeting_id,
+                transcript=transcript,
+                prior_context=prior_context,
+            ),
             expected_output=t["expected_output"],
             agent=agent,
         )

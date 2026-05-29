@@ -169,9 +169,28 @@ def get_consensus(meeting_id: str) -> dict | None:
 
 
 def get_all_risks() -> list[dict]:
-    """Used by the Risk Analyst to check contradictions across all past meetings."""
     conn = get_connection()
     rows = conn.execute("SELECT * FROM risks").fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+def get_all_decisions() -> list[dict]:
+    conn = get_connection()
+    rows = conn.execute("SELECT * FROM decisions ORDER BY meeting_id").fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+def get_all_decisions_with_context() -> list[dict]:
+    """Returns decisions joined with meeting title/date for richer prior context."""
+    conn = get_connection()
+    rows = conn.execute("""
+        SELECT d.*, m.title as meeting_title, m.date as meeting_date
+        FROM decisions d
+        JOIN meetings m ON d.meeting_id = m.meeting_id
+        ORDER BY d.meeting_id
+    """).fetchall()
     conn.close()
     return [dict(r) for r in rows]
 

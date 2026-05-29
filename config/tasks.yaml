@@ -69,11 +69,20 @@ extract_risks:
     Analyze the following meeting transcript and identify all risks, blockers,
     and contradictions.
 
+    {prior_context}
+
     For each risk provide:
     - description: what the risk is
     - severity: one of "low", "medium", or "high"
     - category: one of "timeline", "ownership", "contradiction", "dependency", or "other"
-    - contradicts_meeting_id: if this contradicts a decision from another meeting, state that meeting ID
+    - contradicts_meeting_id: set this ONLY when ALL three conditions are met:
+        (1) the prior meeting context above contains a decision on the EXACT SAME topic,
+        (2) that prior decision is NOT marked [SPRINT CLOSED],
+        (3) the current transcript directly reverses, violates, or contradicts that specific decision.
+        Rules: do NOT set it for similar terminology used in a different project or sprint context.
+        Do NOT set it for risks that are internal to this meeting.
+        Do NOT set it to the current meeting's own ID.
+        Do NOT guess — if unsure, leave null.
     - source_quote: the exact verbatim sentence(s) from the transcript that led you to identify this risk
 
     Also write a one-paragraph summary of the risk profile of this meeting.
@@ -98,3 +107,51 @@ extract_risks:
       "summary": "<string>"
     }}
   agent: risk_analyzer
+
+synthesize_consensus:
+  description: >
+    You have received three independent analyses of the same meeting (ID: {meeting_id}).
+    Reconcile them into a single consensus report.
+
+    --- ACTION ANALYZER OUTPUT ---
+    {action_output}
+
+    --- STRATEGIC ANALYZER OUTPUT ---
+    {strategic_output}
+
+    --- RISK ANALYZER OUTPUT ---
+    {risk_output}
+
+    Instructions:
+    1. agreements: List topics or findings where all three analyses are aligned
+       (e.g., same owner identified, risk acknowledged by both strategic and risk agents).
+    2. conflicts: For each disagreement between the three views, provide:
+       - topic: what the disagreement is about
+       - action_view: what the action analyzer said (or null)
+       - strategic_view: what the strategic analyzer said (or null)
+       - risk_view: what the risk analyzer said (or null)
+       - resolution: your recommended resolution or clarification needed
+    3. unified_summary: One paragraph integrating all three perspectives into a coherent
+       narrative of what happened in this meeting and what it means going forward.
+    4. confidence_score: A float between 0.0 and 1.0 reflecting how well the three
+       analyses agree. 1.0 = full alignment, 0.0 = fundamental contradictions throughout.
+
+    Meeting ID: {meeting_id}
+  expected_output: >
+    A JSON object matching this schema:
+    {{
+      "meeting_id": "<string>",
+      "agreements": ["<string>", "..."],
+      "conflicts": [
+        {{
+          "topic": "<string>",
+          "action_view": "<string or null>",
+          "strategic_view": "<string or null>",
+          "risk_view": "<string or null>",
+          "resolution": "<string or null>"
+        }}
+      ],
+      "unified_summary": "<string>",
+      "confidence_score": <float 0.0-1.0>
+    }}
+  agent: consensus_agent
